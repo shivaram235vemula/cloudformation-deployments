@@ -4,16 +4,16 @@ Description: Deploys an S3 bucket using a CloudFormation template from GitHub
 Parameters:
   GitHubRepoURL:
     Type: String
-    Description: "GitHub raw URL of the S3 bucket template"
+    Description: "https://raw.githubusercontent.com/shivaram235vemula/cloudformation-deployments/main/s3bucket.yml"
   BucketName:
     Type: String
-    Description: "Enter the S3 bucket name"
+    Description: "my-mumbai-s3-bucket-unique143"
 
 Resources:
   TagoreStack:
     Type: AWS::CloudFormation::Stack
     Properties:
-      TemplateURL: !Ref https://github.com/shivaram235vemula/cloudformation-deployments/
+      TemplateURL: !Ref GitHubRepoURL
       Parameters:
         BucketName: !Ref BucketName
 
@@ -21,4 +21,3 @@ Outputs:
   StackName:
     Description: "Deployed CloudFormation Stack Name"
     Value: !Ref s3bucket
-
