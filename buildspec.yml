@@ -9,7 +9,7 @@ phases:
   build:
     commands:
       - echo "Uploading CloudFormation template to S3..."
-      - aws s3 cp s3bucket.yml s3://your-s3-bucket-name/ --acl bucket-owner-full-control
+      - aws s3 cp s3bucket.yml s3://s3-bucket-create-stack-template/ --acl bucket-owner-full-control
 
 artifacts:
   files:
