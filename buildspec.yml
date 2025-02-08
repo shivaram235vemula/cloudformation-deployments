@@ -1,0 +1,18 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo "Fetching latest CloudFormation template from GitHub..."
+      - wget -O s3bucket.yml https://raw.githubusercontent.com/shivaram235vemula/cloudformation-deployments/main/s3bucket.yml
+
+  build:
+    commands:
+      - echo "Uploading CloudFormation template to S3..."
+      - aws s3 cp s3bucket.yml s3://your-s3-bucket-name/ --acl bucket-owner-full-control
+
+artifacts:
+  files:
+    - s3bucket.yml
+  discard-paths: yes
+
